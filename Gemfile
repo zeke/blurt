@@ -19,14 +19,7 @@ group :assets do
 end
 
 group :test do
-  gem 'rspec', '2.7.0'
-  gem 'rspec-rails', '2.7.0'
-  gem 'rspec2-rails-views-matchers'
-  gem 'webrat'
   gem 'factory_girl_rails', '~> 1.4.0'
-  gem 'capybara', '1.0.0'
-  gem 'i18n'
   gem 'autotest', '~> 4.4.6'
   gem 'autotest-rails-pure', '~> 4.1.2'
-  gem 'simplecov', :require => false
 end
