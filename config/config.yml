@@ -1,0 +1,10 @@
+env:
+  test:
+    api:
+      host: 'api.wordnik.com' 
+      base_path: '/v4'
+
+  development:
+    api:
+      host: 'api.wordnik.com' 
+      base_path: '/v4'

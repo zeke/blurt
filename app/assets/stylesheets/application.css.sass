@@ -1,0 +1,150 @@
+@import "compass"
+
+// Mixins
+//------------------------------------------------------------------------
+
+@mixin no_float
+  float: none
+  clear: both
+  overflow: hidden
+  display: block
+  
+@mixin float_left
+  display: block
+  clear: none
+  float: left
+
+@mixin float_right
+  display: block
+  clear: none
+  float: right
+
+@mixin centered_container($width)
+  margin-left: auto
+  margin-right: auto
+  position: relative
+  width: $width
+
+@mixin normal_font
+  font-family: "Helvetica Neue", Helvetica, Arial
+  
+@mixin fancy_font
+  font-family: p22-fllw-eaglefeather-sc, "Helvetica Neue", Helvetica, Arial
+
+// Styles
+//------------------------------------------------------------------------
+
+body
+  +normal_font
+  padding: 40px
+  background-color: #DDD
+  font-size: 18px
+  line-height: 18px
+  position: relative
+  padding: 40px 20px
+
+#content
+  margin: 0 auto
+  position: relative
+  max-width: 480px
+  background-color: white
+  padding: 50px 20px    
+  +border-radius(10px)
+  +box-shadow(2px 2px 5px 5px #CCC)
+
+h1
+  &.typekit
+    +fancy_font
+    color: white
+    background-color: #268BD2
+    font-weight: bold
+    font-size: 48px
+    line-height: 48px
+    +text-shadow(1px 1px 3px #6666CC)
+    +border-radius(100px)
+    +box-shadow(2px 2px 20px #CCC)
+    width: 150px
+    border: 8px solid white
+
+  span.inner_circle
+    display: block
+    width: 150px
+    padding-top: 50px
+    height: 100px
+    text-align: center
+    +box-shadow(inset 2px 2px 20px #6666CC)
+    +border-radius(100px)
+
+#timer
+  color: white
+  font-size: 80px
+  line-height: 80px
+  font-weight: bold
+  text-align: center
+  background-color: #268BD2
+  width: 200px
+  height: 140px
+  padding-top: 60px
+  -webkit-border-radius: 100px
+  -moz-border-radius: 100px
+  border-radius: 100px
+  margin: 0 0 40px 140px
+  &.urgent
+    background-color: red
+
+p#query
+  text-align: center
+  font-weight: bold
+  display: block
+  font-size: 32px
+  line-height: 32px
+  color: #999
+  margin: 0 0 40px 0
+  span.word
+    color: #333
+
+form#play
+  margin: 0 0 5px 0
+  float: none
+  clear: both
+  overflow: hidden
+  #word_input
+    width: 460px
+    height: auto
+    padding: 5px
+    font-size: 18px
+    line-height: 18px
+
+h2
+  margin-top: 50px
+  color: #999
+
+ul#guesses
+  margin: 0
+  padding: 0
+  list-style-type: none
+  li
+    padding: 6px 0
+    border-bottom: 1px solid #DDD
+
+  h2
+    text-align: center
+
+ol#players
+  list-style-type: none
+  margin: 0
+  padding: 0
+  li
+    float: none
+    clear: both
+    overflow: hidden
+    padding: 6px 0
+    border-top: 1px solid #DDD
+    &:last-child
+      border-bottom: none
+  span
+    &.name
+      +float_left
+    &.score
+      +float_right
+      color: #268BD2

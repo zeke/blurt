@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111218082501) do
+ActiveRecord::Schema.define(:version => 20111219024205) do
+
+  create_table "game_ideas", :force => true do |t|
+    t.string   "word"
+    t.string   "mode"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "games", :force => true do |t|
     t.string   "word"
@@ -43,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20111218082501) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "score",                                 :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

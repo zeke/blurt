@@ -54,22 +54,40 @@ describe Game do
     it "gets the latest game if it's not over" do
       @game.over_at = Time.now + 3.minutes
       @game.save
-      
       Game.current.must_equal @game
     end
     
     it "creates a new game if all existing games are over" do
       @game.over_at = Time.now - 3.minutes
       @game.save
-
       Game.current.wont_equal @game
     end
     
   end
-  
+    
   describe "refresh" do
     
-    it "vouches matching guesses"
+    before do
+      User.destroy_all
+      @user1 = Factory.create(:user)
+      @user2 = Factory.create(:user)      
+      @game = Factory.create(:game)
+    end
+    
+    it "vouches matching guesses" do
+      
+      @game.guesses.vouched.count.must_equal 0
+      
+      @user1.guesses.create(:word => 'Ringo', :game => @game)
+      @user1.guesses.create(:word => 'bingo', :game => @game)
+      @user2.guesses.create(:word => 'lingo', :game => @game)
+      
+      @game.guesses.vouched.count.must_equal 0
+      
+      @user2.guesses.create(:word => 'ringo', :game => @game)
+      
+      @game.guesses.vouched.count.must_equal 2      
+    end
     
   end
 

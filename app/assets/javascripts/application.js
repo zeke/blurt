@@ -5,5 +5,9 @@
 // the compiled file.
 //
 //= require jquery
-//= require jquery_ujs
+//= require log.js
 //= require_tree .
+
+$(function() {
+  return window.game.init();
+});

@@ -8,4 +8,18 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
   has_many :guesses
+  
+  def self.active
+    users = Game.current.guesses.map(&:user)
+    users << Game.over.first.guesses.map(&:user) unless Game.over.count.zero?
+    users.flatten.uniq
+  end
+  
+  def as_json(options={})
+    {
+      email: self.email,
+      score: self.score
+    }
+  end
+  
 end
